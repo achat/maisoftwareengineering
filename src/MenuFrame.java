@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.*;
+/** Initial frame to show the menu of available actions
+ * */
 public class MenuFrame extends JFrame{
 	
 	JLabel menuLbl;
@@ -16,6 +18,7 @@ public class MenuFrame extends JFrame{
 		
 		mainPanel=new JPanel(new GridLayout(5,1));
 		
+		/*Four main actions*/
 		viewCustomerListBt=new JButton("Customer List");
 		viewCustomerListBt.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent arg0) {
@@ -33,7 +36,7 @@ public class MenuFrame extends JFrame{
 		buyStockBt=new JButton("Buy Stock");
 		buyStockBt.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent arg0) {
-	        	 JOptionPane.showMessageDialog(null, "Action not implemented yet!");
+	        	 new AddStockFrame();
 	         }
 	      });
 		
@@ -57,33 +60,4 @@ public class MenuFrame extends JFrame{
 		this.setTitle("Stock Market");		
 	}
 	
-	class myMenuButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			
-			if(e.getSource()==viewCustomerListBt)
-			{
-				//JOptionPane.showMessageDialog(this, "Action not implemented yet!");
-			}
-			else if(e.getSource()==viewStockListBt)
-			{
-				
-			}
-			else if(e.getSource()== buyStockBt)
-			{
-				
-			}
-			else if(e.getSource()==sellStockBt)
-			{
-				
-			}
-									
-			//else if(e.getSource()==viewPostsBt)
-			//		new FriendCriteriaFrame();
-			//else if(e.getSource()==viewTotalUsersBt)
-			//		new FriendCriteriaFrame();
-			//else if(e.getSource()==viewTotalGroupsBt)
-			//		new FriendCriteriaFrame();
-		}
-		
-}
 }
