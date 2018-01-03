@@ -80,6 +80,7 @@ public class AddStockFrame extends JFrame{
 	            catch (Exception ex)
 	            {
 	            	totalCostLbl.setText("0");
+	            
 	            }
 	        }			
 	    };
