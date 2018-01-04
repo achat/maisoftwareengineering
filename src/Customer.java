@@ -17,8 +17,8 @@ public class Customer extends User{
 			portfolio = new Portfolio();
 		
 		PortfolioEntry pe = portfolio.checkIfEntryExists(id,stockId);
-		
-		if(pe==null)
+		System.out.println(pe.getId() + "--- ");
+		if(pe.getId()==0)
 		{
 			pe = new PortfolioEntry(id,stockId,stockAmount,stockValue);
 			pe.insertToDB();

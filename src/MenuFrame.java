@@ -43,7 +43,7 @@ public class MenuFrame extends JFrame{
 		sellStockBt=new JButton("Sell Stock");
 		sellStockBt.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent arg0) {
-	        	 JOptionPane.showMessageDialog(null, "Action not implemented yet!");
+	        	 new SellStockFrame();
 	         }
 	      });
 		
