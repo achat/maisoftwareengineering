@@ -79,15 +79,13 @@ public class PortfolioEntry {
 			statement.setInt(2, stockid);
 			statement.setInt(3, amount);
 			statement.setDouble(4, value);
+			statement.setInt(5, this.id);
+			
 			 
 			int rowsUpdated = statement.executeUpdate();
 			if (rowsUpdated > 0) {
-			    System.out.println("An existing user was updated successfully!");
+			    //System.out.println("An existing user was updated successfully!");
 			}
-			//if (rowsInserted > 0) {
-			    //System.out.println("A new user was inserted successfully!");
-			//}
-						
 			myCon.close();
 			
 		} catch (SQLException e) {

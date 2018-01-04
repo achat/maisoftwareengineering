@@ -96,15 +96,13 @@ public class AddStockFrame extends JFrame{
 		        	 {
 		        		 selectedStock.buyStock((int) amountTxt.getValue());
 		        		 selectedCustomer.updateCustomerPortfolio(selectedStock.getId(), (int) amountTxt.getValue(), totalCost);
-		        		 //updateCustomerPortfolio(int stockId, int stockAmount, double stockValue)
+		        		 JOptionPane.showMessageDialog(null, "The transaction was completed successfully");
+		        		 CloseFrame();
 		        	 }
 		        		 
 		         }
 		      });
 			
-		
-		
-		//buyBt=new JButton("Buy Stock");
 		
 		mainPanel=new JPanel(new GridLayout(12,1));
 		
@@ -126,6 +124,12 @@ public class AddStockFrame extends JFrame{
 		this.setSize(500,500);
 		this.setTitle("Buy Stock");
 		
+	}
+	
+	private void CloseFrame()
+	{
+		setVisible(false); //you can't see me!
+		dispose(); //Destroy the JFrame object
 	}
 	
 	

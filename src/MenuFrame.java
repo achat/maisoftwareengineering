@@ -19,10 +19,10 @@ public class MenuFrame extends JFrame{
 		mainPanel=new JPanel(new GridLayout(5,1));
 		
 		/*Four main actions*/
-		viewCustomerListBt=new JButton("Customer List");
+		viewCustomerListBt=new JButton("Customer Portfolio List");
 		viewCustomerListBt.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent arg0) {
-	        	 JOptionPane.showMessageDialog(null, "Action not implemented yet!");
+	        	 new ViewCustomerPortfolioFrame();
 	         }
 	      });
 		

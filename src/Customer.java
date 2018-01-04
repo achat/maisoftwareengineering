@@ -7,6 +7,7 @@ public class Customer extends User{
 	
 	public Customer(int id, String firstName, String lastName) {
 		super(id, firstName, lastName);
+		
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -30,6 +31,27 @@ public class Customer extends User{
 		}
 	}
 	
+	
+	
+	public Portfolio getPortfolio() {
+		if(portfolio==null)
+			portfolio=new Portfolio();
+		
+		return portfolio;
+	}
+
+	public void setPortfolio(Portfolio portfolio) {
+		this.portfolio = portfolio;
+	}
+
+	public double getCreditBalance() {
+		return creditBalance;
+	}
+
+	public void setCreditBalance(double creditBalance) {
+		this.creditBalance = creditBalance;
+	}
+
 	//εκτυπωση πληροφοριων Portfolio
 	public void printPortfolioInfo()
 	{
