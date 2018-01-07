@@ -51,7 +51,31 @@ public class Stock {
 	{
 		freeAmount-=amount;
 		boughtAmount+=amount;
+		updateStockInDB(freeAmount, boughtAmount);
 		
+		//try {
+		//	Connection myCon =DriverManager.getConnection(Constants.dbConnectionString,Constants.dbUsername, Constants.dbPassword);
+			
+		//	String query = "update stocks set availableAmount = ?, boughtAmount = ? where id = ?";
+		//  PreparedStatement preparedStmt = (PreparedStatement) myCon.prepareStatement(query);
+		//    preparedStmt.setInt(1, freeAmount);
+		//    preparedStmt.setInt(2, boughtAmount);
+		//    preparedStmt.setInt(3, id);
+		//    preparedStmt.executeUpdate();			
+	//		myCon.close();
+			
+//		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		finally
+//		{
+//			
+//		}
+	}
+	
+	public void updateStockInDB(int freeAmount, int boughtAmount)
+	{
 		try {
 			Connection myCon =DriverManager.getConnection(Constants.dbConnectionString,Constants.dbUsername, Constants.dbPassword);
 			
@@ -71,6 +95,14 @@ public class Stock {
 		{
 			
 		}
+	}
+	
+	public void sellStock(int amount)
+	{
+		freeAmount+=amount;
+		boughtAmount-=amount;
+		updateStockInDB(freeAmount, boughtAmount);
+		
 	}
 	
 	

@@ -25,8 +25,9 @@ public class Portfolio {
 
 
 	public ArrayList<PortfolioEntry> getPortfolioEntries(int clientid) {
-		if((portfolioEntries==null)||(portfolioEntries.size()==0))
-		{
+		//if((portfolioEntries==null)||(portfolioEntries.size()==0))
+		//{
+		portfolioEntries.clear();
 			try{
 			Connection myCon =DriverManager.getConnection(Constants.dbConnectionString,Constants.dbUsername, Constants.dbPassword);
 
@@ -62,7 +63,7 @@ public class Portfolio {
 		{
 
 		}
-	}
+	//}
 
 	return portfolioEntries;
 }

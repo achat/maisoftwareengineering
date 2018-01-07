@@ -110,7 +110,6 @@ public class ViewCustomerPortfolioFrame extends JFrame{
 
 		    if (evt.getStateChange() == ItemEvent.SELECTED) {		    	
 		    	selectedCustomer = getSelectedCustomer((String)cb.getSelectedItem());
-		    	System.out.println(selectedCustomer.getFirstName());
 		    	
 		    	updatePortfolioTable(selectedCustomer.getPortfolio().getPortfolioEntries(selectedCustomer.getId()));
 		    } else if (evt.getStateChange() == ItemEvent.DESELECTED) {

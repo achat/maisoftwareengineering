@@ -37,6 +37,11 @@ public class CustomerList {
 		
 		return totalClients;
 	}
+	
+	public static void updateCustomerList()
+	{
+		totalClients=getCustomersFromDB();
+	}
 
 
 

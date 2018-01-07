@@ -95,7 +95,7 @@ public class AddStockFrame extends JFrame{
 		        	 else
 		        	 {
 		        		 selectedStock.buyStock((int) amountTxt.getValue());
-		        		 selectedCustomer.updateCustomerPortfolio(selectedStock.getId(), (int) amountTxt.getValue(), totalCost);
+		        		 selectedCustomer.updateCustomerPortfolio(selectedStock.getId(), (int) amountTxt.getValue(), totalCost, true);
 		        		 JOptionPane.showMessageDialog(null, "The transaction was completed successfully");
 		        		 CloseFrame();
 		        	 }
