@@ -8,10 +8,12 @@ import javax.swing.*;
  * */
 public class MenuFrame extends JFrame{
 	
+	//Frame components
 	JLabel menuLbl;
 	JButton viewCustomerListBt, viewStockListBt, buyStockBt, sellStockBt;
 	JPanel mainPanel;
 	
+	//Constructor
 	public MenuFrame()
 	{
 		menuLbl=new JLabel("Available Actions");
@@ -19,6 +21,7 @@ public class MenuFrame extends JFrame{
 		mainPanel=new JPanel(new GridLayout(5,1));
 		
 		/*Four main actions*/
+		//View each customers portfolio
 		viewCustomerListBt=new JButton("Customer Portfolio List");
 		viewCustomerListBt.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent arg0) {
@@ -33,6 +36,7 @@ public class MenuFrame extends JFrame{
 	         }
 	      });
 		
+		//Buy stock
 		buyStockBt=new JButton("Buy Stock");
 		buyStockBt.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent arg0) {
@@ -40,6 +44,7 @@ public class MenuFrame extends JFrame{
 	         }
 	      });
 		
+		//Sell stock
 		sellStockBt=new JButton("Sell Stock");
 		sellStockBt.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent arg0) {

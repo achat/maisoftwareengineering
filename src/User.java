@@ -1,11 +1,13 @@
-
+/**
+ * Parent class of a system user*/
 public class User {
 	
+	//Attribute declaration 
 	protected int id;
 	protected String firstName;
 	protected String lastName;
 	
-	
+	//Constructor
 	public User(int id, String firstName, String lastName) {
 		
 		this.id = id;
@@ -42,8 +44,6 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
 	
 
 }

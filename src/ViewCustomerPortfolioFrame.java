@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.table.*;
-
+/**
+ * A frame to view the portfolio of each user*/
 public class ViewCustomerPortfolioFrame extends JFrame{
 
+	//Frame components 
 	JLabel selectCustomerLbl;
 	JComboBox<Customer> clientList;
 	Customer selectedCustomer;
@@ -15,7 +17,7 @@ public class ViewCustomerPortfolioFrame extends JFrame{
 	JTable table;
 	DefaultTableModel tableModel;
 	
-	
+	//Constructor
 	public ViewCustomerPortfolioFrame()
 	{
 		selectCustomerLbl=new JLabel("Select customer to view his portfolio:");
@@ -28,11 +30,13 @@ public class ViewCustomerPortfolioFrame extends JFrame{
 		ChangeCustomerListener actionListener = new ChangeCustomerListener();
 		clientList.addItemListener(actionListener);
 		
+		//JTable setup
 		String[] columnNames = {"Stock name", "Amount", "Value"};
 		
 		tableModel = new DefaultTableModel(columnNames, 0);
 		table = new JTable(tableModel);		
 		
+		//Put components on the frame
 		BorderLayout bl = new BorderLayout();
 		mainPanel = new JPanel(bl);
 		
@@ -49,21 +53,29 @@ public class ViewCustomerPortfolioFrame extends JFrame{
 		this.setSize(500,500);
 	}
 		
-	
+	/**
+	 * Populate the drop down with the names of the clients
+	 * @return ArrayList (String)*/
 	private ArrayList<String> getClientsNames()
 	{
 		ArrayList<String> clientNames = new ArrayList<String>();
-		
+		//For each client use id, first and last name
 		for(Customer customer : CustomerList.getTotalClients())
 		{
 			clientNames.add(customer.getId() + " " + customer.getFirstName() + " "+customer.getLastName());
 		}
+		//Set the first client as the selected one
 		selectedCustomer=CustomerList.getTotalClients().get(0);
 		return clientNames;
 	}
 	
+	/**
+	 * Each time the client drop down changes update the selected client instance
+	 * @param String the selection of drop down
+	 * @return Customer selected customer*/
 	private Customer getSelectedCustomer(String customerString)
 	{
+		//Split in space to get the id then use it as a key to find the customer from DB list
 		String[] customerSplitStirng = customerString.split("\\s+");
 		for(Customer customer : CustomerList.getTotalClients())
 		{
@@ -74,12 +86,14 @@ public class ViewCustomerPortfolioFrame extends JFrame{
 		return null;
 	}
 	
+	/**
+	 * When the user changes the table that shows the stocks must change too
+	 * @param ArrayList of customer portfolio entries*/
 	private void updatePortfolioTable(ArrayList<PortfolioEntry> pes)
 	{
-		System.out.println("Enter here");
-		System.out.println(pes.size());
+		//Reset table model
 		tableModel.setRowCount(0);
-		
+		//Re populate the table model with the new values
 		for(PortfolioEntry pe : pes)
 		{
 			String stockName = getStockName(pe.getStockid());
@@ -92,6 +106,10 @@ public class ViewCustomerPortfolioFrame extends JFrame{
 		}
 	}
 	
+	/**
+	 * Find the stock name from the stock id
+	 * @param int stock id
+	 * @return string stock name*/
 	private String getStockName(int stockid)
 	{
 		for(Stock st:StockList.getTotalStocks())
@@ -102,6 +120,8 @@ public class ViewCustomerPortfolioFrame extends JFrame{
 		return "";
 	}
 	
+	/**
+	 * Fires every time the selection in the drop down of clients changes*/
 	class ChangeCustomerListener implements ItemListener {
 		  // This method is called only if a new item has been selected.
 		  public void itemStateChanged(ItemEvent evt) {

@@ -1,4 +1,5 @@
-
+/**
+ * A map class to help us maintain our constants like usernames more easily **/
 public class Constants {
 
 	//phpMyAdmin credentials for DB connection

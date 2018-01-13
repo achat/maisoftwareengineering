@@ -6,9 +6,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.mysql.jdbc.*;
-
+/**
+ * Entity for a stock in the stock market*/
 public class Stock {
 
+	//Attribute declaration
 	private int id;
 	private String name;
 	private double value;
@@ -17,7 +19,7 @@ public class Stock {
 	private int freeAmount;
 	
 	
-	
+	//Constructors
 	public Stock(int id, String name, double value, int totalAmount) {
 		super();
 		this.id = id;
@@ -25,10 +27,7 @@ public class Stock {
 		this.value = value;
 		this.totalAmount = totalAmount;
 	}
-	
-	
-	
-	
+		
 	public Stock(int id, String name, double value, int totalAmount, int boughtAmount, int freeAmount) {
 		super();
 		this.id = id;
@@ -39,6 +38,10 @@ public class Stock {
 		this.freeAmount = freeAmount;
 	}
 	
+	/**
+	 * Check if there is available amount of the stock in the market
+	 * @param int the amount we want to check
+	 * @return boolean true if the amount is available, false if not*/
 	public boolean thereIsAvailable(int amountToAsk)
 	{
 		if(amountToAsk<=freeAmount)
@@ -47,56 +50,21 @@ public class Stock {
 		return false;
 	}
 	
+	/**
+	 * Update free and bought amount of the stock and update stock in the DB
+	 * @param int amount of the stock
+	 * */
 	public void buyStock(int amount)
 	{
 		freeAmount-=amount;
 		boughtAmount+=amount;
-		updateStockInDB(freeAmount, boughtAmount);
-		
-		//try {
-		//	Connection myCon =DriverManager.getConnection(Constants.dbConnectionString,Constants.dbUsername, Constants.dbPassword);
-			
-		//	String query = "update stocks set availableAmount = ?, boughtAmount = ? where id = ?";
-		//  PreparedStatement preparedStmt = (PreparedStatement) myCon.prepareStatement(query);
-		//    preparedStmt.setInt(1, freeAmount);
-		//    preparedStmt.setInt(2, boughtAmount);
-		//    preparedStmt.setInt(3, id);
-		//    preparedStmt.executeUpdate();			
-	//		myCon.close();
-			
-//		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		finally
-//		{
-//			
-//		}
+		updateStockInDB(freeAmount, boughtAmount);		
 	}
 	
-	public void updateStockInDB(int freeAmount, int boughtAmount)
-	{
-		try {
-			Connection myCon =DriverManager.getConnection(Constants.dbConnectionString,Constants.dbUsername, Constants.dbPassword);
-			
-			String query = "update stocks set availableAmount = ?, boughtAmount = ? where id = ?";
-		    PreparedStatement preparedStmt = (PreparedStatement) myCon.prepareStatement(query);
-		    preparedStmt.setInt(1, freeAmount);
-		    preparedStmt.setInt(2, boughtAmount);
-		    preparedStmt.setInt(3, id);
-		    preparedStmt.executeUpdate();			
-			myCon.close();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
-		{
-			
-		}
-	}
-	
+	/**
+	 * Update free and bought amount of the stock and update stock in the DB
+	 * @param int amount of the stock
+	 * */
 	public void sellStock(int amount)
 	{
 		freeAmount+=amount;
@@ -105,11 +73,31 @@ public class Stock {
 		
 	}
 	
+	/**
+	 * Update stock in the DB
+	 * @param int the new stock free amount
+	 * @param int the new stock bought amount
+	 * */
+	public void updateStockInDB(int freeAmount, int boughtAmount)
+	{
+		try {
+			//Initialize DB connection
+			Connection myCon =DriverManager.getConnection(Constants.dbConnectionString,Constants.dbUsername, Constants.dbPassword);
+			//Create and execute query
+			String query = "update stocks set availableAmount = ?, boughtAmount = ? where id = ?";
+		    PreparedStatement preparedStmt = (PreparedStatement) myCon.prepareStatement(query);
+		    preparedStmt.setInt(1, freeAmount);
+		    preparedStmt.setInt(2, boughtAmount);
+		    preparedStmt.setInt(3, id);
+		    preparedStmt.executeUpdate();	
+		    //Remember to close DB connection
+			myCon.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
-
-
-
-
 	public int getId() {
 		return id;
 	}
